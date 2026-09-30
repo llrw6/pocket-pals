@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pocket Pals – Virtual Pet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ADOPTION -->
+<main id="adopt" class="screen">
+  <h1 class="logo">Pocket Pals</h1>
+  <p class="sub">Pick a friend and give them a name.</p>
+  <div id="petChoices" class="choices"></div>
+  <input id="nameInput" maxlength="12" placeholder="Pet name" autocomplete="off">
+  <p id="nameError" class="error" role="alert"></p>
+  <button id="adoptBtn" class="btn big">Adopt</button>
+</main>
+
+<!-- GAME -->
+<div id="game" class="screen hidden">
+  <header class="top">
+    <h1 class="logo small">Pocket Pals</h1>
+    <div class="pills">
+      <span class="pill">🪙 <b id="coins">0</b></span>
+      <button id="resetBtn" class="btn ghost">New adoption</button>
+    </div>
+  </header>
+
+  <section class="stage" id="stage">
+    <div class="info">
+      <div><h2 id="petName"></h2><small id="petType"></small></div>
+      <div class="lvl">Level <b id="level">1</b></div>
+    </div>
+    <div class="xpbar"><i id="xpFill"></i></div>
+    <p class="condition">Mood: <b id="mood"></b> · <span id="condition"></span></p>
+
+    <div class="pet-wrap">
+      <div id="bubble" class="bubble"></div>
+      <div id="pet" class="pet" tabindex="0" role="button" aria-label="Pet your pet">
+        <span id="acc" class="acc"></span>
+        <span id="face" class="face"></span>
+      </div>
+      <div id="zzz" class="zzz hidden">💤</div>
+    </div>
+
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="room" class="active">Care</button>
+    <button data-tab="food">Food</button>
+    <button data-tab="shop">Shop</button>
+    <button data-tab="wardrobe">Wardrobe</button>
+    <button data-tab="games">Games</button>
+    <button data-tab="profile">Profile</button>
+  </nav>
+
+  <section class="panel" id="panel-room">
+    <div class="actions">
+      <button class="btn" data-act="play">🎾 Play</button>
+      <button class="btn" data-act="sleep">🛏️ Sleep</button>
+      <button class="btn" data-act="clean">🛁 Clean</button>
+      <button class="btn" data-act="heal">🩹 Care</button>
+    </div>
+  </section>
+
+  <section class="panel hidden" id="panel-food"><div class="grid" id="foodList"></div></section>
+  <section class="panel hidden" id="panel-shop"><div class="grid" id="shopList"></div></section>
+  <section class="panel hidden" id="panel-wardrobe">
+    <h3>Accessories</h3><div class="grid" id="accList"></div>
+    <h3>Rooms</h3><div class="grid" id="roomList"></div>
+  </section>
+
+  <section class="panel hidden" id="panel-games">
+    <div class="gamebar">
+      <button id="startGame" class="btn">Start Star Catch</button>
+      <span>Time <b id="gTime">15</b>s · Score <b id="gScore">0</b></span>
+    </div>
+    <div id="arena" class="arena"><p>Tap the stars before they vanish. Each star is worth a coin and some XP.</p></div>
+  </section>
+
+  <section class="panel hidden" id="panel-profile">
+    <ul class="facts" id="facts"></ul>
+    <h3>Achievements</h3>
+    <div class="grid" id="achList"></div>
+  </section>
+</div>
+
+<!-- CONFIRM DIALOG -->
+<div id="modal" class="modal hidden">
+  <div class="dialog">
+    <h3>Start over?</h3>
+    <p>This deletes your pet and all progress. It can't be undone.</p>
+    <div class="row">
+      <button id="cancelReset" class="btn ghost">Keep my pet</button>
+      <button id="confirmReset" class="btn danger">Delete and restart</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
